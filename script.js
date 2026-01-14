@@ -64,25 +64,29 @@ console.log(checkEligibility(31, false));
 console.log(checkEligibility(18, false));
 
 //Task 4: Refactoring for Reusability
+
+function isValidNumber(value) {
+  return typeof value === "number" && !isNaN(value) && isFinite(value);
+}
 function calculateTotalCost(price, quantity, taxRate, discount = 0) {
   console.log(price, quantity, taxRate, discount);
 
-  if (typeof price !== "number" || price <= 0 || Number.isNaN(price)) {
+  if (!isValidNumber(price) || price <= 0) {
     console.log("Invalid input");
     return;
   }
 
-  if (typeof quantity !== "number" || quantity <= 0 || Number.isNaN(quantity)) {
+  if (!isValidNumber(quantity) || quantity <= 0) {
     console.log("Invalid input");
     return;
   }
 
-  if (typeof taxRate !== "number" || taxRate < 0 || Number.isNaN(taxRate)) {
+  if (!isValidNumber(taxRate) || taxRate < 0) {
     console.log("Invalid input");
     return;
   }
 
-  if (typeof discount !== "number" || discount < 0 || Number.isNaN(discount)) {
+  if (!isValidNumber(discount) || discount < 0) {
     console.log("Invalid input");
     return;
   }
